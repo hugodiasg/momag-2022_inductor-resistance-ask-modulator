@@ -1,0 +1,264 @@
+** sch_path:
+*+ /home/hugodg/projects-sky130/temp-sensor/impedance-transformer/xschem/impedance-transformer-pex_tb-tran.sch
+**.subckt impedance-transformer-pex_tb-tran
+Vdd vd GND 3.3
+Vin2 in GND PULSE(0V 1.8V 0.5ns 0.1ns 0.1ns 50ns 100ns)
+R1 out GND 50 m=1
+x1 in2 out GND impedance-transformer-pex
+x2 vd in2 in GND ask-modulator-pex
+**** begin user architecture code
+
+
+
+*.tran 0.2n 30n
+.tran 0.005n 100n
+*.tran 0.3n 400n
+*.tran 0.05n 1.3n
+
+.control
+destroy all
+run
+
+set color0=white
+set color1=black
+
+
+let t=100n
+let id =-i(vdd)
+plot id
+plot in
+plot out
+*S
+let vrms_rlc=sqrt(integ((out-vd)^2)/t)
+let vrms_nmos=sqrt(integ(out^2)/t)
+let irms=sqrt(integ((-i(vdd))^2)/t)
+let srms_rlc=vrms_rlc*irms
+let srms_nmos=vrms_nmos*irms
+let srms=srms_rlc+srms_nmos
+plot srms
+plot out xlimit 50.5n 51n
+plot out  xlimit .5n 1n
+.endc
+
+
+.lib /home/hugodg/sky130_workspace/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/sky130.lib.spice tt
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:
+*+  /home/hugodg/projects-sky130/temp-sensor/impedance-transformer/xschem/impedance-transformer-pex.sym # of pins=3
+** sym_path:
+*+ /home/hugodg/projects-sky130/temp-sensor/impedance-transformer/xschem/impedance-transformer-pex.sym
+** sch_path:
+*+ /home/hugodg/projects-sky130/temp-sensor/impedance-transformer/xschem/impedance-transformer-pex.sch
+.subckt impedance-transformer-pex  in out gnd
+*.iopin gnd
+*.iopin in
+*.iopin out
+**** begin user architecture code
+
+* NGSPICE file created from impedance-transformer.ext - technology: sky130A
+
+.subckt sky130_fd_pr__cap_mim_m3_2_4GE4YE c2_n2372_n7179# m4_n2472_n7279# VSUBS
+X0 c2_n2372_n7179# m4_n2472_n7279# sky130_fd_pr__cap_mim_m3_2 l=2.293e+07u w=2.293e+07u
+X1 c2_n2372_n7179# m4_n2472_n7279# sky130_fd_pr__cap_mim_m3_2 l=2.293e+07u w=2.293e+07u
+X2 c2_n2372_n7179# m4_n2472_n7279# sky130_fd_pr__cap_mim_m3_2 l=2.293e+07u w=2.293e+07u
+C0 m4_n2472_n7279# c2_n2372_n7179# 105.86fF
+C1 c2_n2372_n7179# VSUBS 0.26fF
+C2 m4_n2472_n7279# VSUBS 28.10fF
+.ends
+
+.subckt sky130_fd_pr__cap_mim_m3_2_8BWDGQ c2_n2486_n10078# m4_n2586_n10178# VSUBS
+X0 c2_n2486_n10078# m4_n2586_n10178# sky130_fd_pr__cap_mim_m3_2 l=2.407e+07u w=2.407e+07u
+X1 c2_n2486_n10078# m4_n2586_n10178# sky130_fd_pr__cap_mim_m3_2 l=2.407e+07u w=2.407e+07u
+X2 c2_n2486_n10078# m4_n2586_n10178# sky130_fd_pr__cap_mim_m3_2 l=2.407e+07u w=2.407e+07u
+X3 c2_n2486_n10078# m4_n2586_n10178# sky130_fd_pr__cap_mim_m3_2 l=2.407e+07u w=2.407e+07u
+C0 m4_n2586_n10178# c2_n2486_n10078# 154.16fF
+C1 c2_n2486_n10078# VSUBS 0.30fF
+C2 m4_n2586_n10178# VSUBS 40.10fF
+.ends
+
+*.subckt impedance-transformer gnd out in
+Xsky130_fd_pr__cap_mim_m3_2_4GE4YE_1 in gnd gnd sky130_fd_pr__cap_mim_m3_2_4GE4YE
+Xsky130_fd_pr__cap_mim_m3_2_4GE4YE_2 in gnd gnd sky130_fd_pr__cap_mim_m3_2_4GE4YE
+Xsky130_fd_pr__cap_mim_m3_2_8BWDGQ_0 out gnd gnd sky130_fd_pr__cap_mim_m3_2_8BWDGQ
+Xsky130_fd_pr__cap_mim_m3_2_8BWDGQ_1 out gnd gnd sky130_fd_pr__cap_mim_m3_2_8BWDGQ
+Xsky130_fd_pr__cap_mim_m3_2_8BWDGQ_2 out gnd gnd sky130_fd_pr__cap_mim_m3_2_8BWDGQ
+Xsky130_fd_pr__cap_mim_m3_2_8BWDGQ_3 out gnd gnd sky130_fd_pr__cap_mim_m3_2_8BWDGQ
+Xsky130_fd_pr__cap_mim_m3_2_4GE4YE_0 in gnd gnd sky130_fd_pr__cap_mim_m3_2_4GE4YE
+
+R0 in in.n1 0.704
+R1 in.n0 in.t3 0.125
+R2 in.n1 in.n0 0.089
+R3 in.t8 in.t7 0.066
+R4 in.t6 in.t8 0.066
+R5 in.t2 in.t1 0.066
+R6 in.t0 in.t2 0.066
+R7 in.t5 in.t4 0.066
+R8 in.t3 in.t5 0.066
+R9 in.n1 in.t6 0.037
+R10 in.n0 in.t0 0.037
+R11 out out.n2 0.325
+R12 out.n0 out.t13 0.094
+R13 out.n1 out.n0 0.079
+R14 out.t14 out.t15 0.066
+R15 out.t12 out.t14 0.066
+R16 out.t13 out.t12 0.066
+R17 out.t10 out.t11 0.066
+R18 out.t8 out.t10 0.066
+R19 out.t9 out.t8 0.066
+R20 out.t6 out.t7 0.066
+R21 out.t4 out.t6 0.066
+R22 out.t5 out.t4 0.066
+R23 out.t2 out.t3 0.066
+R24 out.t0 out.t2 0.066
+R25 out.t1 out.t0 0.066
+R26 out.n2 out.n1 0.064
+R27 out.n2 out.t1 0.041
+R28 out.n0 out.t9 0.018
+R29 out.n1 out.t5 0.018
+C0 out.t7 gnd 33.56fF
+C1 out.t6 gnd 33.64fF
+C2 out.t4 gnd 33.64fF
+C3 out.t5 gnd 29.89fF
+C4 out.t11 gnd 33.56fF
+C5 out.t10 gnd 33.64fF
+C6 out.t8 gnd 33.64fF
+C7 out.t9 gnd 29.89fF
+C8 out.t15 gnd 33.56fF
+C9 out.t14 gnd 33.64fF
+C10 out.t12 gnd 33.64fF
+C11 out.t13 gnd 89.97fF
+C12 out.n0 gnd 28.18fF $ **FLOATING
+C13 out.n1 gnd 13.26fF $ **FLOATING
+C14 out.t3 gnd 33.56fF
+C15 out.t2 gnd 33.64fF
+C16 out.t0 gnd 33.64fF
+C17 out.t1 gnd 33.03fF
+C18 out.n2 gnd 41.48fF $ **FLOATING
+C19 in.t7 gnd 32.16fF
+C20 in.t8 gnd 32.25fF
+C21 in.t6 gnd 30.87fF
+C22 in.t1 gnd 32.16fF
+C23 in.t2 gnd 32.25fF
+C24 in.t0 gnd 30.87fF
+C25 in.t4 gnd 32.16fF
+C26 in.t5 gnd 32.25fF
+C27 in.t3 gnd 30.02fF
+C28 in.n0 gnd 11.26fF $ **FLOATING
+C29 in.n1 gnd 57.09fF $ **FLOATING
+C30 in gnd 55.98fF
+C31 out gnd 70.58fF
+*.ends
+
+
+
+**** end user architecture code
+x1 in out l1
+.ends
+
+
+* expanding   symbol:
+*+  /home/hugodg/projects-sky130/temp-sensor/ask_modulator/xschem/ask-modulator-pex.sym # of pins=4
+** sym_path: /home/hugodg/projects-sky130/temp-sensor/ask_modulator/xschem/ask-modulator-pex.sym
+** sch_path: /home/hugodg/projects-sky130/temp-sensor/ask_modulator/xschem/ask-modulator-pex.sch
+.subckt ask-modulator-pex  vd out in gnd
+*.iopin gnd
+*.ipin in
+*.opin out
+*.iopin vd
+**** begin user architecture code
+
+
+* NGSPICE file created from ask-modulator.ext - technology: sky130A
+
+.subckt sky130_fd_pr__res_xhigh_po_0p35_CTQ8XN w_n201_n1098# a_n35_500# a_n35_n932#
+X0 a_n35_n932# a_n35_500# w_n201_n1098# sky130_fd_pr__res_xhigh_po_0p35 l=5e+06u
+C0 a_n35_n932# w_n201_n1098# 1.08fF
+C1 a_n35_500# w_n201_n1098# 1.08fF
+.ends
+
+.subckt sky130_fd_pr__nfet_g5v0d10v5_PWYS4E a_n108_n870# a_n50_n958# w_n278_n1128#  a_50_n870#
+X0 a_50_n870# a_n50_n958# a_n108_n870# w_n278_n1128# sky130_fd_pr__nfet_g5v0d10v5 ad=2.523e+12p
++ pd=1.798e+07u as=2.523e+12p ps=1.798e+07u w=8.7e+06u l=500000u
+C0 a_50_n870# a_n108_n870# 1.03fF
+C1 a_50_n870# w_n278_n1128# 0.84fF
+C2 a_n108_n870# w_n278_n1128# 0.84fF
+C3 a_n50_n958# w_n278_n1128# 0.52fF
+.ends
+
+.subckt sky130_fd_pr__cap_mim_m3_2_97K3D8 c2_n2519_n7620# m4_n2619_n7720# VSUBS
+X0 c2_n2519_n7620# m4_n2619_n7720# sky130_fd_pr__cap_mim_m3_2 l=2.44e+07u w=2.44e+07u
+X1 c2_n2519_n7620# m4_n2619_n7720# sky130_fd_pr__cap_mim_m3_2 l=2.44e+07u w=2.44e+07u
+X2 c2_n2519_n7620# m4_n2619_n7720# sky130_fd_pr__cap_mim_m3_2 l=2.44e+07u w=2.44e+07u
+C0 m4_n2619_n7720# c2_n2519_n7620# 118.49fF
+C1 c2_n2519_n7620# VSUBS 0.26fF
+C2 m4_n2619_n7720# VSUBS 30.70fF
+.ends
+
+*.subckt ask-modulator in out vd gnd
+Xsky130_fd_pr__res_xhigh_po_0p35_CTQ8XN_0 gnd vd out sky130_fd_pr__res_xhigh_po_0p35_CTQ8XN
+Xsky130_fd_pr__nfet_g5v0d10v5_PWYS4E_0 out in gnd gnd sky130_fd_pr__nfet_g5v0d10v5_PWYS4E
+Xsky130_fd_pr__cap_mim_m3_2_97K3D8_0 vd out gnd sky130_fd_pr__cap_mim_m3_2_97K3D8
+
+R0 vd vd.t1 0.714
+R1 vd.t0 vd.t2 0.066
+R2 vd.t1 vd.t0 0.066
+R3 in in.t0 448.598
+C0 gnd in 0.36fF
+C1 vd gnd 1.55fF
+C2 out in 0.46fF
+C3 vd out -0.86fF
+C4 out gnd 0.13fF
+C5 in.t0 0 0.40fF
+C6 vd.t2 0 42.34fF
+C7 vd.t0 0 40.08fF
+C8 vd.t1 0 46.90fF
+C9 gnd 0 -0.14fF
+C10 out 0 235.88fF
+C11 in 0 4.90fF
+C12 vd 0 13.98fF
+*.ends
+
+
+
+
+**** end user architecture code
+x1 vd out l0
+.ends
+
+
+* expanding   symbol:  /home/hugodg/projects-sky130/temp-sensor/impedance-transformer/xschem/l1.sym
+*+ # of pins=2
+** sym_path: /home/hugodg/projects-sky130/temp-sensor/impedance-transformer/xschem/l1.sym
+** sch_path: /home/hugodg/projects-sky130/temp-sensor/impedance-transformer/xschem/l1.sch
+.subckt l1  p1 p2
+*.iopin p2
+*.iopin p1
+L0 p1 net3 598p m=1
+Cs1 p1 net1 26.59f m=1
+Cs2 p2 net2 25.14f m=1
+Rs1 net1 GND 63.55 m=1
+Rs2 net2 GND 19.11 m=1
+R1 p2 net3 2.89 m=1
+.ends
+
+
+* expanding   symbol:  /home/hugodg/projects-sky130/temp-sensor/ask_modulator/xschem/l0.sym # of
+*+ pins=2
+** sym_path: /home/hugodg/projects-sky130/temp-sensor/ask_modulator/xschem/l0.sym
+** sch_path: /home/hugodg/projects-sky130/temp-sensor/ask_modulator/xschem/l0.sch
+.subckt l0  p1 p2
+*.iopin p2
+*.iopin p1
+L0 p1 net3 993p m=1
+Cs1 p1 net1 58.53f m=1
+Cs2 p2 net2 52.93f m=1
+Rs1 net1 GND 24.1 m=1
+Rs2 net2 GND 22.94 m=1
+R1 p2 net3 3.443 m=1
+.ends
+
+.GLOBAL GND
+.end

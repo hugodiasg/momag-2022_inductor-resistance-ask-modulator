@@ -1,0 +1,7 @@
+** sch_path: /home/hugodg/projects_sky130/temp_sensor/ask_modulator/xschem/l0.sch
+**.subckt l0 p2 p1
+*.iopin p2
+*.iopin p1
+L0 p1 p2 1.059n m=1
+**.ends
+.end

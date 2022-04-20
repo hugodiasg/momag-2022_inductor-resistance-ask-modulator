@@ -1,0 +1,17 @@
+Pi Model at f=915 MHz:  Q = 3.607 , 3.608 , 3.62 
+L = 1.998 nH R = 3.163 
+Cs1 = 94.68 fF Rs1 = 24.07 
+Cs2 = 98.37 fF Rs2 = -12.32      Est. Resonance = 11.73 GHz
+Found:  n =3.5000, w =18.4000, s =2.0000
+L =1.9982, R_sh = 44.8787(s), 44.8912(d)  Q = 3.6070, 3.6078, 3.6199(d)
+ASITIC>  pix l1 0.915
+
+maxL = 8196.72, maxT =  2.54, maxW =  2.54 (lambda = 163934.43, delta =  3.18)
+Performing Analysis at 915 MHz
+Generating capacitance matrix (105x105)...
+Generating inductance matrix (105x105).....
+Pi Model at f=915 MHz:  Q = 3.308 , 3.312 , 3.327 
+L = 1.996 nH R = 3.431 
+Cs1 = 147.3 fF Rs1 = 15.51 
+Cs2 = 131.8 fF Rs2 = 8.408      Est. Resonance = 9.362 GHz
+

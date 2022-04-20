@@ -1,0 +1,92 @@
+** sch_path:
+*+ /home/hugodg/projects_sky130/temp_sensor/impedance-transformer/xschem/impedance-transformer_tb-ac.sch
+**.subckt impedance-transformer_tb-ac
+Vin net1 GND DC 1.8 AC 1
+Vin1 net2 GND DC 1.8 AC 1
+R1 ns_in1 net1 50 m=1
+R3 ns_out1 GND 50 m=1
+R4 ns_out2 net2 50 m=1
+R5 ns_in2 GND 50 m=1
+x1 ns_in1 ns_out1 GND impedance-transformer
+x2 ns_in2 ns_out2 GND impedance-transformer
+**** begin user architecture code
+
+
+
+.ac lin 1MEG 2G 4G
+.control
+destroy all
+set units=degrees
+run
+
+set color0=white
+set color1=black
+
+let z0=50
+
+* Find two S parameters from test circuit
+let s_in1 = v(ns_in1)
+let s_out1 = v(ns_out1)
+let s_in2 = v(ns_in2)
+let s_out2 = v(ns_out2)
+
+* Extract Y parameters
+*let StoYDelS = ((1+s_in1)*(1+s_out2)-s_out1*s_in2)*z0
+*let y_in1 = ((1+s_out2)*(1-s_in1)+s_out1*s_in2/StoYDelS
+*let y_out1=-2*s_out1/StoYDelS
+*let y_in2=-2*s_in2/StoYDelS
+*let y_out2 = ((1+s_in1)*(1-s_out2)+s_out1+s_in2)/StoYDelS
+
+* Extract Z parameters
+let StoZDelS = ((1-s_in1)*(1-s_out2)-s_out1*s_in2)/z0
+let z_in1 = ((1+s_in1)*(1-s_out2)+s_out1*s_in2)/StoZDelS
+let z_out1 = 2*s_out1/StoZDelS
+let z_in2 = 2*s_in2/StoZDelS
+let z_out2=((1-s_in1)*(1+s_out2)+s_out1*s_in2)/StoZDelS
+
+plot z_in1
+plot ph(z_in1)
+plot z_out1
+plot ph(z_out1)
+
+.endc
+
+
+.lib /home/hugodg/sky130_workspace/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/sky130.lib.spice tt
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:
+*+  /home/hugodg/projects_sky130/temp_sensor/impedance-transformer/xschem/impedance-transformer.sym # of pins=3
+** sym_path:
+*+ /home/hugodg/projects_sky130/temp_sensor/impedance-transformer/xschem/impedance-transformer.sym
+** sch_path:
+*+ /home/hugodg/projects_sky130/temp_sensor/impedance-transformer/xschem/impedance-transformer.sch
+.subckt impedance-transformer  in out gnd
+*.iopin gnd
+*.iopin in
+*.iopin out
+XC0 in gnd sky130_fd_pr__cap_mim_m3_2 W=28.095 L=28.095 MF=2 m=2
+x1 in out l0
+XC1 out gnd sky130_fd_pr__cap_mim_m3_2 W=27.013 L=27.013 MF=4 m=4
+.ends
+
+
+* expanding   symbol:  /home/hugodg/projects_sky130/temp_sensor/ask_modulator/xschem/l0.sym # of
+*+ pins=2
+** sym_path: /home/hugodg/projects_sky130/temp_sensor/ask_modulator/xschem/l0.sym
+** sch_path: /home/hugodg/projects_sky130/temp_sensor/ask_modulator/xschem/l0.sch
+.subckt l0  p1 p2
+*.iopin p2
+*.iopin p1
+L0 p1 net3 2.012n m=1
+Cs1 p1 net1 21.91f m=1
+Cs2 p2 net2 22.25f m=1
+Rs1 net1 GND 27.08 m=1
+Rs2 net2 GND 169.5m m=1
+R1 p2 net3 7.446 m=1
+.ends
+
+.GLOBAL GND
+.end

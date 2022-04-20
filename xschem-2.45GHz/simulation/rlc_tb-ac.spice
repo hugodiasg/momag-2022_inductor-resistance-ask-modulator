@@ -1,0 +1,47 @@
+** sch_path: /home/hugodg/projects_sky130/temp_sensor/ask_modulator/xschem/rlc_tb-ac.sch
+**.subckt rlc_tb-ac
+Vdd a GND DC 0 AC 1
+xl0 a GND l0
+XC0 a GND sky130_fd_pr__cap_mim_m3_2 W=24.5 L=24.5 MF=3 m=3
+XR1 GND a GND sky130_fd_pr__res_xhigh_po_0p35 L=5 mult=1 m=1
+**** begin user architecture code
+
+.lib /home/hugodg/sky130_workspace/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/sky130.lib.spice tt
+
+
+
+.ac lin 1Meg 2.4G 3G
+.control
+destroy all
+run
+let z=a/(-i(vdd))
+
+set color0=white
+set color1=black
+
+plot ph(z)
+plot mag(z)
+
+
+.endc
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  /home/hugodg/projects_sky130/temp_sensor/ask_modulator/xschem/l0.sym # of
+*+ pins=2
+** sym_path: /home/hugodg/projects_sky130/temp_sensor/ask_modulator/xschem/l0.sym
+** sch_path: /home/hugodg/projects_sky130/temp_sensor/ask_modulator/xschem/l0.sch
+.subckt l0  p1 p2
+*.iopin p2
+*.iopin p1
+L0 p1 net3 1.081n m=1
+Cs1 p1 net1 43.75f m=1
+Cs2 p2 net2 41.19f m=1
+Rs1 net1 GND 23.73 m=1
+Rs2 net2 GND 21.97 m=1
+R1 p2 net3 4.869 m=1
+.ends
+
+.GLOBAL GND
+.end
