@@ -1,1 +1,1 @@
-# momag-2022_inductor-resistance-ask-modulator
+# sbmo-2022_inductor-resistance-ask-modulator
