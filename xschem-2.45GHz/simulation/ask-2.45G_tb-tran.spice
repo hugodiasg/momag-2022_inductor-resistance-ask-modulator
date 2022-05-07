@@ -1,17 +1,17 @@
 ** sch_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G_tb-tran.sch
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G_tb-tran.sch
 **.subckt ask-2.45G_tb-tran
 Vdd vd GND 3.3
 Vin in GND PULSE(0V 1.8V 0.5ns 0.1ns 0.1ns 50ns 100ns)
 x1 vd out0 in GND ask-2.45G-0
 x2 vd out1 in GND ask-2.45G-1
-x3 vd out2 in GND ask-2.45G-2
-x4 vd out3 in GND ask-2.45G-3
+x3 vd out3 in GND ask-2.45G-3
+x4 vd out2 in GND ask-2.45G-2
 **** begin user architecture code
 
 
 *.tran 0.2n 30n
-.tran 0.005n 100n
+.tran 0.001n 100n
 *.tran 0.3n 400n
 *.tran 0.05n 1.3n
 
@@ -19,14 +19,32 @@ x4 vd out3 in GND ask-2.45G-3
 destroy all
 run
 
+let tol0=maximum(out0)*0.02+0.98*3.3
+let tol1=maximum(out1)*0.02+0.98*3.29966
+let tol2=maximum(out2)*0.02+0.98*3.29654
+
 set color0=white
 set color1=black
+** set hardcopy format
+set hcopydevtype=postscript
+set hcopypscolor=1
 
+plot in
 plot out0 title 'Out0 - Ideal Inductor'
 plot out1 title 'Out1 - R=0.3443 ohms'
 plot out2 title 'Out2 - R=3.443 ohms'
 plot out3 title 'Out3 - R=34.43 ohms'
 plot out0 out1 out2 out3 xlimit 0 5n title 'Out0, Out1, Out2 and Out3'
+
+hardcopy In-2.4GHz.ps in title 'in - 10MHz'
+hardcopy Ideal-2.4GHz.ps out0 title 'Out0 - Ideal Inductor'
+hardcopy Rdiv10-2.4GHz.ps out1 title 'Out1 - R=0.3443 ohms'
+hardcopy R-2.4GHz.ps out2 title 'Out2 - R=3.443 ohms'
+hardcopy Rx10-2.4GHz.ps out3 title 'Out3 - R=34.43 ohms'
+hardcopy Zoom-2.4GHz.ps out0 out1 out2 out3 xlimit 0 5n title 'Out0, Out1, Out2 and Out3'
+
+*fft out2
+*plot mag(out2) xlimit 1g 3.5g ylimit 0 60u
 .endc
 
 
@@ -36,17 +54,17 @@ plot out0 out1 out2 out3 xlimit 0 5n title 'Out0, Out1, Out2 and Out3'
 **.ends
 
 * expanding   symbol:
-*+  /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-0.sym # of pins=4
+*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-0.sym # of pins=4
 ** sym_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-0.sym
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-0.sym
 ** sch_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-0.sch
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-0.sch
 .subckt ask-2.45G-0  vd out in gnd
 *.iopin gnd
 *.ipin in
 *.opin out
 *.iopin vd
-XC0 vd out sky130_fd_pr__cap_mim_m3_2 W=24.4 L=24.4 VM=3 m=3
+XC0 vd out sky130_fd_pr__cap_mim_m3_2 W=25.6 L=25.6 VM=3 m=3
 XM1 out in gnd gnd sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=8.7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
@@ -56,57 +74,37 @@ L1 vd out 993p m=1
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-1.sym # of pins=4
+*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-1.sym # of pins=4
 ** sym_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-1.sym
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-1.sym
 ** sch_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-1.sch
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-1.sch
 .subckt ask-2.45G-1  vd out in gnd
 *.iopin gnd
 *.ipin in
 *.opin out
 *.iopin vd
-XC0 vd out sky130_fd_pr__cap_mim_m3_2 W=24.4 L=24.4 VM=3 m=3
+XC0 vd out sky130_fd_pr__cap_mim_m3_2 W=25.6 L=25.6 VM=3 m=3
 XM1 out in gnd gnd sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=8.7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
 XR1 out vd gnd sky130_fd_pr__res_xhigh_po_0p35 L=5 mult=1 m=1
-x1 vd out l0-2.45G
+x1 vd out l1-2.45G
 .ends
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-2.sym # of pins=4
+*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-3.sym # of pins=4
 ** sym_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-2.sym
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-3.sym
 ** sch_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-2.sch
-.subckt ask-2.45G-2  vd out in gnd
-*.iopin gnd
-*.ipin in
-*.opin out
-*.iopin vd
-XC0 vd out sky130_fd_pr__cap_mim_m3_2 W=24.4 L=24.4 VM=3 m=3
-XM1 out in gnd gnd sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=8.7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1 m=1
-XR1 out vd gnd sky130_fd_pr__res_xhigh_po_0p35 L=5 mult=1 m=1
-x1 vd out l2-2.45G
-.ends
-
-
-* expanding   symbol:
-*+  /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-3.sym # of pins=4
-** sym_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-3.sym
-** sch_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-3.sch
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-3.sch
 .subckt ask-2.45G-3  vd out in gnd
 *.iopin gnd
 *.ipin in
 *.opin out
 *.iopin vd
-XC0 vd out sky130_fd_pr__cap_mim_m3_2 W=24.4 L=24.4 VM=3 m=3
+XC0 vd out sky130_fd_pr__cap_mim_m3_2 W=25.6 L=25.6 VM=3 m=3
 XM1 out in gnd gnd sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=8.7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
 + sa=0 sb=0 sd=0 mult=1 m=1
@@ -116,47 +114,49 @@ x1 vd out l3-2.45G
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l0-2.45G.sym # of pins=2
+*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-2.sym # of pins=4
 ** sym_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l0-2.45G.sym
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-2.sym
 ** sch_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l0-2.45G.sch
-.subckt l0-2.45G  p1 p2
-*.iopin p2
-*.iopin p1
-L0 p1 net3 993p m=1
-Cs1 p1 net1 58.53f m=1
-Cs2 p2 net2 52.93f m=1
-Rs1 net1 GND 24.1 m=1
-Rs2 net2 GND 22.94 m=1
-R1 p2 net3 0.3443 m=1
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-2.sch
+.subckt ask-2.45G-2  vd out in gnd
+*.iopin gnd
+*.ipin in
+*.opin out
+*.iopin vd
+XC0 vd out sky130_fd_pr__cap_mim_m3_2 W=25.6 L=25.6 VM=3 m=3
+XM1 out in gnd gnd sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=8.7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XR1 out vd gnd sky130_fd_pr__res_xhigh_po_0p35 L=5 mult=1 m=1
+x1 vd out l2-2.45G
 .ends
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l2-2.45G.sym # of pins=2
+*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l1-2.45G.sym # of pins=2
 ** sym_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l2-2.45G.sym
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l1-2.45G.sym
 ** sch_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l2-2.45G.sch
-.subckt l2-2.45G  p1 p2
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l1-2.45G.sch
+.subckt l1-2.45G  p1 p2
 *.iopin p2
 *.iopin p1
-L0 p1 net3 993p m=1
-Cs1 p1 net1 58.53f m=1
-Cs2 p2 net2 52.93f m=1
-Rs1 net1 GND 24.1 m=1
-Rs2 net2 GND 22.94 m=1
-R1 p2 net3 3.443 m=1
+L0 p1 net3 1.996n m=1
+Cs1 p1 net1 147.3f m=1
+Cs2 p2 net2 131.8f m=1
+Rs1 net1 GND 15.51 m=1
+Rs2 net2 GND 8.408 m=1
+R1 p2 net3 0.3431 m=1
 .ends
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l3-2.45G.sym # of pins=2
+*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l3-2.45G.sym # of pins=2
 ** sym_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l3-2.45G.sym
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l3-2.45G.sym
 ** sch_path:
-*+ /home/hugodg/projects_sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l3-2.45G.sch
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l3-2.45G.sch
 .subckt l3-2.45G  p1 p2
 *.iopin p2
 *.iopin p1
@@ -166,6 +166,24 @@ Cs2 p2 net2 52.93f m=1
 Rs1 net1 GND 24.1 m=1
 Rs2 net2 GND 22.94 m=1
 R1 p2 net3 34.43 m=1
+.ends
+
+
+* expanding   symbol:
+*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l2-2.45G.sym # of pins=2
+** sym_path:
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l2-2.45G.sym
+** sch_path:
+*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/l2-2.45G.sch
+.subckt l2-2.45G  p1 p2
+*.iopin p2
+*.iopin p1
+L0 p1 net3 993p m=1
+Cs1 p1 net1 58.53f m=1
+Cs2 p2 net2 52.93f m=1
+Rs1 net1 GND 24.1 m=1
+Rs2 net2 GND 22.94 m=1
+R1 p2 net3 3.443 m=1
 .ends
 
 .GLOBAL GND

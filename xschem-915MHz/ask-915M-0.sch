@@ -40,7 +40,7 @@ C {devices/iopin.sym} 400 -110 1 0 {name=p1 lab=gnd}
 C {devices/ipin.sym} 340 -160 0 0 {name=p3 lab=in}
 C {devices/opin.sym} 440 -200 0 0 {name=p4 lab=out}
 C {devices/iopin.sym} 400 -332.5 3 0 {name=p2 lab=vd}
-C {sky130_fd_pr/cap_mim_m3_2.sym} 400 -260 0 0 {name=C0 model=cap_mim_m3_2 W=29.093 L=29.093 MF=9 spiceprefix=X}
+C {sky130_fd_pr/cap_mim_m3_2.sym} 400 -260 0 0 {name=C0 model=cap_mim_m3_2 W=27 L=27 MF=9 spiceprefix=X}
 C {devices/lab_pin.sym} 600 -260 0 0 {name=l1 sig_type=std_logic lab=gnd}
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 380 -160 0 0 {name=M1
 L=0.5
