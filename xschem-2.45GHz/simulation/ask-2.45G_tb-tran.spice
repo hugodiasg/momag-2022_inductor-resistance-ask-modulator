@@ -11,7 +11,7 @@ x4 vd out3 in GND ask-2.45G-3
 
 
 *.tran 0.2n 30n
-.tran 0.001n 100n
+.tran 0.4p 100n
 *.tran 0.3n 400n
 *.tran 0.05n 1.3n
 
@@ -20,7 +20,7 @@ destroy all
 run
 
 let tol0=maximum(out0)*0.02+0.98*3.3
-let tol1=maximum(out1)*0.02+0.98*3.29966
+let tol1=maximum(out1)*0.02+0.98*3.29965
 let tol2=maximum(out2)*0.02+0.98*3.29654
 
 set color0=white
@@ -44,10 +44,10 @@ hardcopy Rx10-2.4GHz.ps out3 title 'Out3 - R=34.43 ohms'
 hardcopy Zoom-2.4GHz.ps out0 out1 out2 out3 xlimit 0 5n title 'Out0, Out1, Out2 and Out3'
 
 
-fft out0 out1 out2 out3
-plot mag(out0) mag(out1) mag(out2) mag(out3) xlimit 1.4g 3.4g ylimit 0 5.5m
+*fft out0 out1 out2 out3
+*plot mag(out0) mag(out1) mag(out2) mag(out3) xlimit 1.4g 3.4g ylimit 0 5.5m
 
-hardcopy fft-2.4GHz.ps mag(out0) mag(out1) mag(out2) mag(out3) xlimit 1.4g 3.4g ylimit 0 5.5m
+*hardcopy fft-2.4GHz.ps mag(out0) mag(out1) mag(out2) mag(out3) xlimit 1.4g 3.4g ylimit 0 5.5m
 .endc
 
 

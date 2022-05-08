@@ -2,7 +2,7 @@
 *+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M_tb-tran.sch
 **.subckt ask-915M_tb-tran
 Vdd vd GND 3.3
-Vin in GND PULSE(0V 1.8V 0.5ns 0.1ns 0.1ns 50ns 100ns)
+Vin in GND PULSE(0V 1.8V 0.5ns 0.1ns 0.1ns 1500ns 3000ns)
 x1 vd out0 in GND ask-915M-0
 x2 vd out1 in GND ask-915M-1
 x3 vd out2 in GND ask-915M-2
@@ -11,7 +11,7 @@ x4 vd out3 in GND ask-915M-3
 
 
 *.tran 0.2n 30n
-.tran 0.5p 100n
+.tran 0.01n 3000n
 *.tran 0.3n 400n
 *.tran 0.05n 1.3n
 
@@ -44,10 +44,10 @@ hardcopy R-915MHz.ps out2 title 'Out2 - R=3.431 ohms'
 hardcopy Rx10-915MHz.ps out3 title 'Out3 - R=34.31 ohms'
 hardcopy Zoom-915MHz.ps out0 out1 out2 out3 xlimit 0 5n title 'Out0, Out1, Out2 and Out3'
 
-fft out0 out1 out2 out3
-plot mag(out0) mag(out1) mag(out2) mag(out3) xlimit 0.6G 1.6G ylimit 0 7m
+*fft out0 out1 out2 out3
+*plot mag(out0) mag(out1) mag(out2) mag(out3) xlimit 0.6G 1.6G ylimit 0 7m
 
-hardcopy fft-915MHz.ps mag(out0) mag(out1) mag(out2) mag(out3) xlimit 0.6G 1.6G ylimit 0 7m
+*hardcopy fft-915MHz.ps mag(out0) mag(out1) mag(out2) mag(out3) xlimit 0.6G 1.6G ylimit 0 7m
 
 .endc
 

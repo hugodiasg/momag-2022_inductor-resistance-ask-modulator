@@ -40,7 +40,7 @@ C {devices/lab_pin.sym} 155 -190 2 0 {name=l3 sig_type=std_logic lab=vd}
 C {devices/gnd.sym} -60 -170 2 0 {name=l5 lab=GND}
 C {devices/code_shown.sym} 390 -915 0 0 {name=Simulation only_toplevel=false value="
 *.tran 0.2n 30n
-.tran 0.5p 100n
+.tran 0.001n 100n
 *.tran 0.3n 400n
 *.tran 0.05n 1.3n
 
