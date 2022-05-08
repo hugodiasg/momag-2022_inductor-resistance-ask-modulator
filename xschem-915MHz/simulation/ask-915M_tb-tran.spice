@@ -1,5 +1,5 @@
 ** sch_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M_tb-tran.sch
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M_tb-tran.sch
 **.subckt ask-915M_tb-tran
 Vdd vd GND 3.3
 Vin in GND PULSE(0V 1.8V 0.5ns 0.1ns 0.1ns 50ns 100ns)
@@ -11,7 +11,7 @@ x4 vd out3 in GND ask-915M-3
 
 
 *.tran 0.2n 30n
-.tran 0.001n 100n
+.tran 0.5p 100n
 *.tran 0.3n 400n
 *.tran 0.05n 1.3n
 
@@ -44,8 +44,10 @@ hardcopy R-915MHz.ps out2 title 'Out2 - R=3.431 ohms'
 hardcopy Rx10-915MHz.ps out3 title 'Out3 - R=34.31 ohms'
 hardcopy Zoom-915MHz.ps out0 out1 out2 out3 xlimit 0 5n title 'Out0, Out1, Out2 and Out3'
 
-*fft out2
-*plot mag(out2) xlimit 615meg 1.215g ylimit 0 10u
+fft out0 out1 out2 out3
+plot mag(out0) mag(out1) mag(out2) mag(out3) xlimit 0.6G 1.6G ylimit 0 7m
+
+hardcopy fft-915MHz.ps mag(out0) mag(out1) mag(out2) mag(out3) xlimit 0.6G 1.6G ylimit 0 7m
 
 .endc
 
@@ -56,11 +58,11 @@ hardcopy Zoom-915MHz.ps out0 out1 out2 out3 xlimit 0 5n title 'Out0, Out1, Out2 
 **.ends
 
 * expanding   symbol:
-*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-0.sym # of pins=4
+*+  /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-0.sym # of pins=4
 ** sym_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-0.sym
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-0.sym
 ** sch_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-0.sch
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-0.sch
 .subckt ask-915M-0  vd out in gnd
 *.iopin gnd
 *.ipin in
@@ -76,11 +78,11 @@ L1 vd out 1.996n m=1
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-1.sym # of pins=4
+*+  /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-1.sym # of pins=4
 ** sym_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-1.sym
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-1.sym
 ** sch_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-1.sch
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-1.sch
 .subckt ask-915M-1  vd out in gnd
 *.iopin gnd
 *.ipin in
@@ -96,11 +98,11 @@ x1 vd out l1-915M
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-2.sym # of pins=4
+*+  /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-2.sym # of pins=4
 ** sym_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-2.sym
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-2.sym
 ** sch_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-2.sch
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-2.sch
 .subckt ask-915M-2  vd out in gnd
 *.iopin gnd
 *.ipin in
@@ -116,11 +118,11 @@ x1 vd out l2-915M
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-3.sym # of pins=4
+*+  /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-3.sym # of pins=4
 ** sym_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-3.sym
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-3.sym
 ** sch_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-3.sch
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-3.sch
 .subckt ask-915M-3  vd out in gnd
 *.iopin gnd
 *.ipin in
@@ -136,11 +138,11 @@ x1 vd out l3-915M
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/l1-915M.sym # of pins=2
+*+  /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/l1-915M.sym # of pins=2
 ** sym_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/l1-915M.sym
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/l1-915M.sym
 ** sch_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/l1-915M.sch
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/l1-915M.sch
 .subckt l1-915M  p1 p2
 *.iopin p2
 *.iopin p1
@@ -154,11 +156,11 @@ R1 p2 net3 0.3431 m=1
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/l2-915M.sym # of pins=2
+*+  /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/l2-915M.sym # of pins=2
 ** sym_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/l2-915M.sym
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/l2-915M.sym
 ** sch_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/l2-915M.sch
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/l2-915M.sch
 .subckt l2-915M  p1 p2
 *.iopin p2
 *.iopin p1
@@ -172,11 +174,11 @@ R1 p2 net3 3.431 m=1
 
 
 * expanding   symbol:
-*+  /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/l3-915M.sym # of pins=2
+*+  /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/l3-915M.sym # of pins=2
 ** sym_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/l3-915M.sym
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/l3-915M.sym
 ** sch_path:
-*+ /home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/l3-915M.sch
+*+ /home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/l3-915M.sch
 .subckt l3-915M  p1 p2
 *.iopin p2
 *.iopin p1

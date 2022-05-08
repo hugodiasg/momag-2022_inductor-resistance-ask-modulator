@@ -38,7 +38,7 @@ C {devices/gnd.sym} 165 -30 0 0 {name=l1 lab=GND}
 C {devices/lab_pin.sym} 325 -80 1 0 {name=l2 sig_type=std_logic lab=out0}
 C {devices/lab_pin.sym} 155 -190 2 0 {name=l3 sig_type=std_logic lab=vd}
 C {devices/gnd.sym} -60 -170 2 0 {name=l5 lab=GND}
-C {devices/code_shown.sym} 390 -805 0 0 {name=Simulation only_toplevel=false value="
+C {devices/code_shown.sym} 392.5 -850 0 0 {name=Simulation only_toplevel=false value="
 *.tran 0.2n 30n
 .tran 0.001n 100n
 *.tran 0.3n 400n
@@ -72,8 +72,11 @@ hardcopy R-2.4GHz.ps out2 title 'Out2 - R=3.443 ohms'
 hardcopy Rx10-2.4GHz.ps out3 title 'Out3 - R=34.43 ohms'
 hardcopy Zoom-2.4GHz.ps out0 out1 out2 out3 xlimit 0 5n title 'Out0, Out1, Out2 and Out3'
 
-*fft out2
-*plot mag(out2) xlimit 1g 3.5g ylimit 0 60u
+
+fft out0 out1 out2 out3
+plot mag(out0) mag(out1) mag(out2) mag(out3) xlimit 1.4g 3.4g ylimit 0 5.5m
+
+hardcopy fft-2.4GHz.ps mag(out0) mag(out1) mag(out2) mag(out3) xlimit 1.4g 3.4g ylimit 0 5.5m
 .endc"
 }
 C {devices/code_shown.sym} 410 -70 0 0 {name=Lib only_toplevel=false value=".lib "/home/hugodg/sky130_workspace/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/sky130.lib.spice" tt"}
@@ -93,7 +96,7 @@ C {devices/gnd.sym} 165 690 0 0 {name=l17 lab=GND}
 C {devices/lab_pin.sym} 325 640 1 0 {name=l18 sig_type=std_logic lab=out3}
 C {devices/lab_pin.sym} 165 560 2 0 {name=l19 sig_type=std_logic lab=vd}
 C {devices/lab_pin.sym} 5 640 1 0 {name=l20 sig_type=std_logic lab=in}
-C {/home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-0.sym} 165 -80 0 0 {name=x1}
-C {/home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-1.sym} 165 160 0 0 {name=x2}
-C {/home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-3.sym} 165 640 0 0 {name=x3}
-C {/home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-2.sym} 165 410 0 0 {name=x4}
+C {/home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-0.sym} 165 -80 0 0 {name=x1}
+C {/home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-1.sym} 165 160 0 0 {name=x2}
+C {/home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-2.sym} 165 410 0 0 {name=x3}
+C {/home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-2.45GHz/ask-2.45G-3.sym} 165 640 0 0 {name=x4}

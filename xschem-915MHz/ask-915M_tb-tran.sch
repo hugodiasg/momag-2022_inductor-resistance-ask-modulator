@@ -40,7 +40,7 @@ C {devices/lab_pin.sym} 155 -190 2 0 {name=l3 sig_type=std_logic lab=vd}
 C {devices/gnd.sym} -60 -170 2 0 {name=l5 lab=GND}
 C {devices/code_shown.sym} 390 -915 0 0 {name=Simulation only_toplevel=false value="
 *.tran 0.2n 30n
-.tran 0.001n 100n
+.tran 0.5p 100n
 *.tran 0.3n 400n
 *.tran 0.05n 1.3n
 
@@ -73,8 +73,10 @@ hardcopy R-915MHz.ps out2 title 'Out2 - R=3.431 ohms'
 hardcopy Rx10-915MHz.ps out3 title 'Out3 - R=34.31 ohms'
 hardcopy Zoom-915MHz.ps out0 out1 out2 out3 xlimit 0 5n title 'Out0, Out1, Out2 and Out3'
 
-*fft out2
-*plot mag(out2) xlimit 615meg 1.215g ylimit 0 10u
+fft out0 out1 out2 out3
+plot mag(out0) mag(out1) mag(out2) mag(out3) xlimit 0.6G 1.6G ylimit 0 7m
+
+hardcopy fft-915MHz.ps mag(out0) mag(out1) mag(out2) mag(out3) xlimit 0.6G 1.6G ylimit 0 7m
 
 .endc"
 }
@@ -95,7 +97,7 @@ C {devices/gnd.sym} 165 690 0 0 {name=l17 lab=GND}
 C {devices/lab_pin.sym} 325 640 1 0 {name=l18 sig_type=std_logic lab=out3}
 C {devices/lab_pin.sym} 165 560 2 0 {name=l19 sig_type=std_logic lab=vd}
 C {devices/lab_pin.sym} 5 640 1 0 {name=l20 sig_type=std_logic lab=in}
-C {/home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-0.sym} 165 -80 0 0 {name=x1}
-C {/home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-1.sym} 165 160 0 0 {name=x2}
-C {/home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-2.sym} 165 410 0 0 {name=x3}
-C {/home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-3.sym} 165 640 0 0 {name=x4}
+C {/home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-0.sym} 165 -80 0 0 {name=x1}
+C {/home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-1.sym} 165 160 0 0 {name=x2}
+C {/home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-2.sym} 165 410 0 0 {name=x3}
+C {/home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/ask-915M-3.sym} 165 640 0 0 {name=x4}

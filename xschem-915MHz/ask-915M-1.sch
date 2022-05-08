@@ -60,4 +60,4 @@ L=5
 model=res_xhigh_po_0p35
 spiceprefix=X
 mult=1}
-C {/home/hugodg/projects-sky130/momag-2022_inductor-resistance-ask-modulator/xschem-915MHz/l1-915M.sym} 540 -275 1 0 {name=x1}
+C {/home/hugodg/projects-sky130/sbmo-2022_inductor-resistance-ask-modulator/xschem-915MHz/l1-915M.sym} 540 -275 1 0 {name=x1}

@@ -30,26 +30,26 @@ N 90 0 107.5 0 {
 lab=#net3}
 C {devices/ind.sym} 60 0 3 0 {name=L0
 m=1
-value=1.996n
+value=993p
 footprint=1206
 device=inductor}
 C {devices/capa.sym} 0 30 0 0 {name=Cs1
 m=1
-value=147.3f
+value=58.53f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/capa.sym} 192.5 30 0 0 {name=Cs2
 m=1
-value=131.8f
+value=52.93f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/res.sym} 0 107.5 0 0 {name=Rs1
-value=15.51
+value=24.1
 footprint=1206
 device=resistor
 m=1}
 C {devices/res.sym} 192.5 107.5 0 0 {name=Rs2
-value= 8.408
+value= 22.94
 footprint=1206
 device=resistor
 m=1}
@@ -57,7 +57,7 @@ C {devices/iopin.sym} 222.5 0 0 0 {name=p1 lab=p2}
 C {devices/iopin.sym} -20 0 2 0 {name=p2 lab=p1}
 C {devices/gnd.sym} 112.5 172.5 0 0 {name=l1 lab=GND}
 C {devices/res.sym} 137.5 0 1 0 {name=R1
-value=0.3431
+value=0.3443
 footprint=1206
 device=resistor
 m=1}
